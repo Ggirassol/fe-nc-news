@@ -1,0 +1,28 @@
+.single-article {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.single-article img {
+    width: 600px;
+}
+
+.single-article h1 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.single-article h2 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.single-article h3 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
