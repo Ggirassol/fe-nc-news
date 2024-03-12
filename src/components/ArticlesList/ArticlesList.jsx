@@ -6,20 +6,25 @@ import "./ArticlesList.css"
 const ArticlesList = () => {
 
     const [articlesList, setArticlesList] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
+        setIsLoading(true)
         getArticles().then(({ articles }) => {
             setArticlesList(articles)
+            setIsLoading(false)
         })
     }, [])
 
-    return (
-    <ul className="articles-list">
+
+
+    return isLoading ?
+    (<h4 className="loading">Loading articles...</h4>) :
+    (<ul className="articles-list">
         {articlesList.map(article => {
             return <ArticleCard key={article.article_id} article={article}/>
         })}
-    </ul>
-    )
+    </ul>)
 }
 
 export default ArticlesList;
