@@ -1,0 +1,31 @@
+.comments {
+    padding: 50px;
+}
+
+.comments li {
+    list-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid black ;
+}
+
+.comments .author {
+    font-weight: bold;
+}
+
+.comments .author-date {
+    text-align: right;
+}
+
+.comments h2 {
+    padding-bottom: 20px;
+}
+
+.comments .likes {
+    text-align: left;
+}
+
+.comments .space-between {
+    display: flex;
+    justify-content: space-between;
+}
