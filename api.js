@@ -21,3 +21,15 @@ export const getArticleComments = (article_id) => {
         return data
     })
 }
+
+export const likeArticle = (article_id) => {
+    return ncNews.patch(`/articles/${article_id}`, {inc_votes: 1}).then(({ data })=> {
+        return data 
+    })
+}
+
+export const dislikeArticle = (article_id) => {
+    return ncNews.patch(`/articles/${article_id}`, {inc_votes: -1}).then(({ data })=> {
+        return data 
+    })
+}
