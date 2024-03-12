@@ -5,7 +5,7 @@ import UserContext from './contexts/User';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import ArticlesList from './components/ArticlesList/ArticlesList';
-import SingleArticle from './components/SingleArticle';
+import SingleArticle from './components/SingleArticle/SingleArticle';
 import AddArticle from './components/AddArticle';
 import Users from './components/Users';
 import SingleUser from './components/SingleUser';
