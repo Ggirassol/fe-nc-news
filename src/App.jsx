@@ -18,10 +18,11 @@ import './App.css'
 function App() {
 
   const [currUser] = useState({
-    username: "icellusedkars",
-    name: "sam",
-    avatar_url: "https://avatars2.githubusercontent.com/u/24604688?s=460&v=4"
-    })
+    username: 'cooljmessy',
+    name: 'Peter Messy',
+    avatar_url:
+      'https://vignette.wikia.nocookie.net/mrmen/images/1/1a/MR_MESSY_4A.jpg/revision/latest/scale-to-width-down/250?cb=20170730171002'
+  })
 
   return (
     <UserContext.Provider value={{currUser}}>

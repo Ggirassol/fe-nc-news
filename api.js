@@ -22,14 +22,14 @@ export const getArticleComments = (article_id) => {
     })
 }
 
-export const likeArticle = (article_id) => {
-    return ncNews.patch(`/articles/${article_id}`, {inc_votes: 1}).then(({ data })=> {
+export const likeArticle = (article_id, vote) => {
+    return ncNews.patch(`/articles/${article_id}`, {inc_votes: vote}).then(({ data })=> {
         return data 
     })
 }
 
-export const dislikeArticle = (article_id) => {
-    return ncNews.patch(`/articles/${article_id}`, {inc_votes: -1}).then(({ data })=> {
-        return data 
+export const addComment = (article_id, username, body) => {
+    return ncNews.post(`/articles/${article_id}/comments`, {username: username, body: body}).then(({ data }) => {
+        return data
     })
 }
