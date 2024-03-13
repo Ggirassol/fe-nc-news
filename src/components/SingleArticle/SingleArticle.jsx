@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleArticle, likeArticle, dislikeArticle } from "../../../api";
+import { getSingleArticle, likeArticle } from "../../../api";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import "./SingleArticle.css"
 import Comments from "../Comments/Comments";
@@ -27,10 +27,11 @@ const SingleArticle = () => {
           setHasUserLikedArticle(true);
           return { ...currSingleArticle, votes: currSingleArticle.votes + 1 };
         });
-        likeArticle(article_id).catch((err) => {
+        likeArticle(article_id, 1).catch((err) => {
           console.log(err);
           setCurrSingleArticle((currSingleArticle) => {
             setHasUserLikedArticle(false);
+            alert("Failed to like the article")
             return { ...currSingleArticle, votes: currSingleArticle.votes - 1 };
           });
         });
@@ -39,7 +40,7 @@ const SingleArticle = () => {
           setHasUserLikedArticle(false);
           return { ...currSingleArticle, votes: currSingleArticle.votes - 1 };
         });
-        dislikeArticle(article_id).catch((err) => {
+        likeArticle(article_id, -1).catch((err) => {
           console.log(err);
           setCurrSingleArticle((currSingleArticle) => {
             setHasUserLikedArticle(true);

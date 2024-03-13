@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react";
 import { getArticleComments } from "../../../api";
+import AddComment from "../AddComment/AddComment";
 import "./Comments.css"
 
 const Comments = ({ article_id }) => {
-  const [currComments, setCurrComents] = useState([]);
+  const [currComments, setCurrComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getArticleComments(article_id).then(({ comments }) => {
       setIsLoading(false);
-      setCurrComents(comments);
+      setCurrComments(comments);
     });
   }, []);
 
-  return isLoading ? (
-    <h3 className="loading">Loading comments...</h3>
-  ) : (
+  return (
+    <>
+    {isLoading ? (<h3 className="loading">Loading comments...</h3>) : 
+    (<>
+      <AddComment article_id={article_id} currComments={currComments} setCurrComments={setCurrComments}/> 
     <div className="comments">
       <h2>Comments</h2>
       <ul>
-        {currComments.map((comment) => {
+        {currComments.map((comment, i) => {
           return (
-            <li key={comment.comment_id}>
+            <li key={i}>
               <p>{comment.body}</p>
               <div className="space-between">
                 <span className="likes">{comment.votes} Likes</span>
@@ -37,7 +40,9 @@ const Comments = ({ article_id }) => {
         })}
       </ul>
     </div>
-  );
+    </>)}
+    </>
+  )
 };
 
 export default Comments;
