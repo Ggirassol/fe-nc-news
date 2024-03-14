@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getArticleComments } from "../../../api";
 import AddComment from "../AddComment/AddComment";
+import UserContext from "../../contexts/User";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteComment } from "../../../api";
+import ErrorSnackBar from "../ErrorSnackBar/ErrorSnackBar";
 import "./Comments.css"
+
 
 const Comments = ({ article_id }) => {
   const [currComments, setCurrComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { currUser } = useContext(UserContext);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getArticleComments(article_id).then(({ comments }) => {
@@ -13,6 +20,23 @@ const Comments = ({ article_id }) => {
       setCurrComments(comments);
     });
   }, []);
+
+  const handleDeleteComment = (comment_id) => {
+    const commentsBeforeDelete = [...currComments]
+    setCurrComments((prevComments) => {
+      return prevComments.filter(comment => {
+        return comment.comment_id !== comment_id     
+      })
+    })
+    deleteComment(comment_id)
+    .catch((err) => {
+      setCurrComments(commentsBeforeDelete)
+      setError(true)
+      setTimeout(() => {
+        setError(false);
+      }, "3000");
+    })
+  }
 
   return (
     <>
@@ -33,6 +57,9 @@ const Comments = ({ article_id }) => {
                   <span className="date">
                     {comment.created_at.slice(0, 10)}
                   </span>
+                  {currUser.username === comment.author && (
+                    <p><button onClick={() => handleDeleteComment(comment.comment_id)}><DeleteIcon/></button></p>
+                  )}
                 </div>
               </div>
             </li>
@@ -40,6 +67,7 @@ const Comments = ({ article_id }) => {
         })}
       </ul>
     </div>
+    {error && (<ErrorSnackBar/>) }
     </>)}
     </>
   )

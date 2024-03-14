@@ -4,12 +4,14 @@ import { getSingleArticle, likeArticle } from "../../../api";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import "./SingleArticle.css"
 import Comments from "../Comments/Comments";
+import ErrorSnackBar from "../ErrorSnackBar/ErrorSnackBar";
 
 const SingleArticle = () => {
 
     const [currSingleArticle, setCurrSingleArticle] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [hasUserLikedArticle, setHasUserLikedArticle] = useState(false)
+    const [error, setError] = useState(false);
 
     const {article_id} = useParams();
 
@@ -31,7 +33,10 @@ const SingleArticle = () => {
           console.log(err);
           setCurrSingleArticle((currSingleArticle) => {
             setHasUserLikedArticle(false);
-            alert("Failed to like the article")
+            setError(true);
+            setTimeout(() => {
+              setError(false);
+            }, "3000");
             return { ...currSingleArticle, votes: currSingleArticle.votes - 1 };
           });
         });
@@ -41,9 +46,12 @@ const SingleArticle = () => {
           return { ...currSingleArticle, votes: currSingleArticle.votes - 1 };
         });
         likeArticle(article_id, -1).catch((err) => {
-          console.log(err);
           setCurrSingleArticle((currSingleArticle) => {
             setHasUserLikedArticle(true);
+            setError(true);
+            setTimeout(() => {
+              setError(false);
+            }, "3000");
             return { ...currSingleArticle, votes: currSingleArticle.votes + 1 };
           });
         });
@@ -62,15 +70,15 @@ const SingleArticle = () => {
         
           {hasUserLikedArticle ?
           (<div>
-            <button className="liked-like-btn" onClick={() => handleArticleLikeBtn()}><ThumbUpAltIcon /></button> {currSingleArticle.votes} {currSingleArticle.votes === 1 ? <span>Like</span> : <span>Likes</span>}
+            <button className="liked-like-btn" aria-label="like" onClick={() => handleArticleLikeBtn()}><ThumbUpAltIcon/></button> {currSingleArticle.votes} {currSingleArticle.votes === 1 ? <span>Like</span> : <span>Likes</span>}
             <p className="you-liked">You liked this article!</p>
           </div>
           ) :
           (<p>
-            <button onClick={() => handleArticleLikeBtn(article_id)}><ThumbUpAltIcon /></button> {currSingleArticle.votes} {currSingleArticle.votes === 1 ? <span>Like</span> : <span>Likes</span>}
+            <button aria-label="like" onClick={() => handleArticleLikeBtn(article_id)}><ThumbUpAltIcon /></button> {currSingleArticle.votes} {currSingleArticle.votes === 1 ? <span>Like</span> : <span>Likes</span>}
           </p>)}
+          {error && (<ErrorSnackBar/>)}
           <Comments article_id={article_id}/>
-
         </div>
     );
 }
