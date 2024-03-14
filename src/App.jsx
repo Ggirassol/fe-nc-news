@@ -11,6 +11,8 @@ import Users from './components/Users';
 import SingleUser from './components/SingleUser';
 import Library from './components/Library';
 import Profile from './components/Profile';
+import ArticlesListByTopic from './components/ArticlesListByTopic';
+import FilterBar from './components/FilterBar.jsx/FilterBar';
 import './App.css'
 
 
@@ -28,6 +30,7 @@ function App() {
     <UserContext.Provider value={{currUser}}>
       <Header/>
       <NavBar/>
+      <FilterBar/>
       <Routes>
         <Route path='/' element={<ArticlesList/>} />
         <Route path='/articles/:article_id' element={<SingleArticle/>} />
@@ -36,6 +39,7 @@ function App() {
         <Route path={`/members/${currUser.username}`} element ={<SingleUser/>} />
         <Route path={`/${currUser.username}/library`} element ={<Library/>} />
         <Route path={`/${currUser.username}/profile`} element ={<Profile/>} />
+        <Route path={`/topic/:topic`} element={<ArticlesListByTopic/>}/>
       </Routes>
     </UserContext.Provider>
   )
