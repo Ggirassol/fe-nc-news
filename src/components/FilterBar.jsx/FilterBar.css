@@ -1,0 +1,10 @@
+.filter-bar {
+    display: flex;
+    list-style: none;
+    background-color: rgb(176, 12, 51);
+}
+
+.filter-bar li {
+    padding: 5px;
+    color: black;
+}
