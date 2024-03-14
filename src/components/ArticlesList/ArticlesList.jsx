@@ -12,7 +12,7 @@ const ArticlesList = () => {
         setIsLoading(true)
         getArticles().then(({ articles }) => {
             setArticlesList(articles)
-            setIsLoading(false)git checkout 
+            setIsLoading(false)
         })
     }, [])
 
