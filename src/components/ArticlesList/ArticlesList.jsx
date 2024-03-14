@@ -3,18 +3,18 @@ import { getArticles } from "../../../api";
 import ArticleCard from "../ArticleCard.jsx/ArticleCard";
 import "./ArticlesList.css"
 
-const ArticlesList = () => {
+const ArticlesList = ({order_by, sort_by}) => {
 
     const [articlesList, setArticlesList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         setIsLoading(true)
-        getArticles().then(({ articles }) => {
+        getArticles(sort_by, order_by).then(({ articles }) => {
             setArticlesList(articles)
             setIsLoading(false)
         })
-    }, [])
+    }, [sort_by, order_by])
 
 
 
