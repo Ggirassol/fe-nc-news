@@ -12,6 +12,7 @@ import Library from './components/Library';
 import Profile from './components/Profile';
 import ArticlesListByTopic from './components/ArticlesListByTopic';
 import FilterBar from './components/FilterBar.jsx/FilterBar';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 import './App.css'
 
 
@@ -35,13 +36,14 @@ function App() {
       <FilterBar order_by={order_by} setOrder_by={setOrder_by} sort_by={sort_by} setSort_by={setSort_by}/>
       <Routes>
         <Route path='/' element={<ArticlesList order_by={order_by} sort_by={sort_by}/>} />
-        <Route path='/articles/:article_id' element={<SingleArticle/>} />
+        <Route path='/articles/:article_id' element={<SingleArticle />} />
         <Route path={`/${currUser.username}/create`} element ={<AddArticle/>} />
         <Route path='/members' element ={<Users/>} />
         <Route path={`/members/${currUser.username}`} element ={<SingleUser/>} />
         <Route path={`/${currUser.username}/library`} element ={<Library/>} />
         <Route path={`/${currUser.username}/profile`} element ={<Profile/>} />
         <Route path={`/topic/:topic`} element={<ArticlesListByTopic order_by={order_by} sort_by={sort_by}/>}/>
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
     </UserContext.Provider>
   )

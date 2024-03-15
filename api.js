@@ -20,9 +20,7 @@ export const getArticles = (sort_by, order_by) => {
   }
 
 export const getSingleArticle = (article_id) => {
-    return ncNews.get(`/articles/${article_id}`).then(({ data }) => {
-        return data
-    })
+    return ncNews.get(`/articles/${article_id}`)
 }
 
 export const getArticleComments = (article_id) => {

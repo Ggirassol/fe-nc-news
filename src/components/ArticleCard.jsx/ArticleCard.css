@@ -17,3 +17,9 @@
 .article-card .topic {
     color: rgb(176, 12, 51);
 }
+
+.likes-and-comments {
+    color: rgb(65, 65, 65);
+    font-size: 14px;
+    text-align: right;
+}

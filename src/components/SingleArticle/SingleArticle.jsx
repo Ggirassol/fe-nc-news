@@ -5,6 +5,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import "./SingleArticle.css"
 import Comments from "../Comments/Comments";
 import ErrorSnackBar from "../ErrorSnackBar/ErrorSnackBar";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const SingleArticle = () => {
 
@@ -12,15 +13,18 @@ const SingleArticle = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [hasUserLikedArticle, setHasUserLikedArticle] = useState(false)
     const [error, setError] = useState(false);
+    const [beError, setBeError] = useState(null);
 
     const {article_id} = useParams();
 
     useEffect(() => {
         setIsLoading(true)
-        getSingleArticle(article_id).then(({article}) => {
-            setCurrSingleArticle(article)
+        getSingleArticle(article_id).then((data) => {
+            setCurrSingleArticle(data.data.article)
             setIsLoading(false)
-        })
+        }).catch((err) => {
+          setBeError(err);
+        });
     }, [])
 
     const handleArticleLikeBtn = () => {
@@ -58,7 +62,9 @@ const SingleArticle = () => {
       }
     };
     
-    return isLoading ? (
+    return beError ? 
+    (<ErrorPage beError={beError} setBeError={setBeError}/>) :
+    (isLoading ? (
       <h4 className="loading">Loading article...</h4>
     ) : (
         <div className="single-article">
@@ -80,6 +86,7 @@ const SingleArticle = () => {
           {error && (<ErrorSnackBar/>)}
           <Comments article_id={article_id}/>
         </div>
+      )
     );
 }
 
