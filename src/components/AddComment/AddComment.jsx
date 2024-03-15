@@ -13,9 +13,9 @@ const AddComment = ( {article_id, currComments, setCurrComments } ) => {
     e.preventDefault();
     if(/\S/.test(newComment)) {
       setIsItPosting(true)
-      addComment(article_id, currUser.username, newComment).then((newAddedComment) => {
+      addComment(article_id, currUser.username, newComment).then(({data}) => {
         setIsItPosting(false)
-        setCurrComments([newAddedComment.newComment, ...currComments])
+        setCurrComments([data.newComment, ...currComments])
         setNewComment("")
       })
     }

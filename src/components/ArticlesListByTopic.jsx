@@ -12,8 +12,8 @@ const ArticlesListByTopic = ({order_by, sort_by}) => {
 
     useEffect(() => {
         setIsLoading(true);
-        getArticlesByTopic(topic, sort_by, order_by).then(({ articles }) => {
-            setArticlesList(articles)
+        getArticlesByTopic(topic, sort_by, order_by).then(({ data }) => {
+            setArticlesList(data.articles)
             setIsLoading(false)
         }).catch((err) => {
           setBeError(err);

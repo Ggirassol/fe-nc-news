@@ -13,8 +13,8 @@ const FilterBar = ({ order_by, setOrder_by, sort_by, setSort_by}) => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   useEffect(() => {
-    getTopics().then(({ topics }) => {
-      setTopics(topics)
+    getTopics().then(({ data }) => {
+      setTopics(data.topics)
     })
   }, []);
 

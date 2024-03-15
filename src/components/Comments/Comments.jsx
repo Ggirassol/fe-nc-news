@@ -15,9 +15,9 @@ const Comments = ({ article_id }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getArticleComments(article_id).then(({ comments }) => {
+    getArticleComments(article_id).then(({ data }) => {
       setIsLoading(false);
-      setCurrComments(comments);
+      setCurrComments(data.comments);
     });
   }, []);
 
