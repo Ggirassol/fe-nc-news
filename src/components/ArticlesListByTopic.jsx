@@ -2,22 +2,28 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticlesByTopic } from "../../api";
 import ArticleCard from "./ArticleCard.jsx/ArticleCard";
+import ErrorPage from "./ErrorPage/ErrorPage";
 
 const ArticlesListByTopic = ({order_by, sort_by}) => {
     const { topic } = useParams();
     const [articlesList, setArticlesList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [beError, setBeError] = useState(null);
 
     useEffect(() => {
         setIsLoading(true);
         getArticlesByTopic(topic, sort_by, order_by).then(({ articles }) => {
             setArticlesList(articles)
             setIsLoading(false)
-        })
+        }).catch((err) => {
+          setBeError(err);
+        });
     }, [topic, sort_by, order_by])
 
 
-    return isLoading? (
+    return beError ? 
+    (<ErrorPage beError={beError} setBeError={setBeError}/>) :
+    (isLoading? (
           <h4 className="loading">Loading articles...</h4>
         ) : (
           <>
@@ -30,6 +36,7 @@ const ArticlesListByTopic = ({order_by, sort_by}) => {
             </ul>
           </>
         )
+    )
 }
 
 export default ArticlesListByTopic;

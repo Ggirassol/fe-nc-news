@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ArticleCard.css'
 
@@ -10,6 +9,7 @@ const ArticleCard = ( {article} ) => {
             <h3>{article.title}</h3>
         </Link>
         <p><span className="topic">{article.topic}</span><span className='float-right'>{article.created_at.slice(0,10)}</span></p>
+        <p className="likes-and-comments">{article.votes} likes {article.comment_count} comments</p>
         </li>
     )
 }
