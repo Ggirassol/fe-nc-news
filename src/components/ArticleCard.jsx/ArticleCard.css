@@ -23,3 +23,8 @@
     font-size: 14px;
     text-align: right;
 }
+
+.article-card:hover{
+    background-color: rgb(224, 221, 221);
+    box-shadow: 5px 5px rgba(209, 207, 207, 0.907);
+}

@@ -33,8 +33,8 @@ const FilterBar = ({ order_by, setOrder_by, sort_by, setSort_by}) => {
       <ul className="topics">
         {topics.map((topic) => {
           return (
-            <li className="topic" key={topic.slug}>
-              <Link onClick={() => {setOrder_by(null); setSort_by(null)}} to={`/topic/${topic.slug}`}>{topic.slug}</Link>
+            <li  key={topic.slug}>
+              <Link className="topic" onClick={() => {setOrder_by(null); setSort_by(null)}} to={`/topic/${topic.slug}`}>{topic.slug}</Link>
             </li>
           );
         })}

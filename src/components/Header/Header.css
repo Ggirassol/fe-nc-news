@@ -1,4 +1,10 @@
 .header {
-    background-color: red;
+    background-color: rgb(198, 13, 13);
     padding: 10px;
+    color: white;
+}
+
+.header h1 {
+    color: white;
+    font-size:xx-large;
 }

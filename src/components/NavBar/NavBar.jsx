@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../contexts/User";
+import HomeIcon from '@mui/icons-material/Home';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import PeopleIcon from '@mui/icons-material/People';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 import "./NavBar.css";
 
 const NavBar = ({ setOrder_by, setSort_by}) => {
@@ -8,19 +14,23 @@ const NavBar = ({ setOrder_by, setSort_by}) => {
 
   return (
     <nav className="nav-bar">
-      <Link onClick={() => {setOrder_by(null); setSort_by(null)}} className="icon" to="/">Home</Link>
-      <span>Hello {currUser.username}!</span>
-      <Link className="icon" to={`/${currUser.username}/create`}>Create</Link>
-      <Link className="icon" to="/members" >Members</Link>
-      <Link className="icon" to={`/${currUser.username}/library`}>Library</Link>
+      <div className="first-section">
+      <Link aria-label="homepage" onClick={() => {setOrder_by(null); setSort_by(null)}} className="icon" to="/"><HomeIcon/></Link>
+      <span className="greeting">Hello {currUser.username}!</span>
+      </div>
+      <div className="second-section">
+      <Link aria-label="write an article"className="icon" to={`/${currUser.username}/create`}><AddBoxIcon/></Link>
+      <Link aria-label="members" className="icon" to="/members"><PeopleIcon/></Link>
+      <Link aria-label="My library" className="icon" to={`/${currUser.username}/library`}><AutoStoriesIcon/></Link>
       {currUser.avatar_url ? (
         <Link to={`/${currUser.username}/profile`}>
-          <img src={currUser.avatar_url} alt="My Profile"/> Profile
+          <img src={currUser.avatar_url} alt="My Profile"/>
         </Link>
       ) : (
-        <Link className="icon" to={`/${currUser.username}/profile`}>Profile
+        <Link aria-label="My Profile" className="icon" to={`/${currUser.username}/profile`}><AccountCircleIcon/>
         </Link>
       )}
+      </div>
     </nav>
   );
 };

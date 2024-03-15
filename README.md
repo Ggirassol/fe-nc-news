@@ -14,6 +14,7 @@ Users can like an article, remove their like, comment an article and delete thei
 https://github.com/Ggirassol/nc-news
 
 # Instructions for install and set up
+If you would like to run this app in your local machine
 
 node v>=18.2.64
 

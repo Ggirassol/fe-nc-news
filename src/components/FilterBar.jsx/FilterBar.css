@@ -1,32 +1,45 @@
 .filter-bar {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(176, 12, 51);
+  background-color: rgb(198, 13, 13);
 }
 
 .filter-bar .topics {
   display: flex;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .filter-bar .topics li {
-  padding: 5px;
-  color: black;
+  padding-right: 15px;
+  padding-left: 15px;
   list-style: none;
+  border-right: solid black;
+}
+
+.filter-bar .topic {
+  color: black
+}
+
+.filter-bar .topic:hover {
+  background-color:white
+
 }
 
 .dropbtn {
-  background-color: #3498DB;
+  background-color: whitesmoke;
   width: 80px;
   height: auto;
-  color: white;
-  padding: 7px;
+  color: black;
+  padding: 4px;
   border: none;
   cursor: pointer;
+  border-radius: 25px;
 }
   
 .dropbtn:hover,
 .dropbtn:focus {
-  background-color: #2980B9;
+  background-color: #d0d0d0;
 }
 
 
@@ -65,4 +78,8 @@
 
 .small-btn {
   background-color: transparent;
+}
+
+.small-btn:hover {
+  background-color: whitesmoke;
 }

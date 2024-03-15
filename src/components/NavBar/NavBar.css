@@ -1,7 +1,10 @@
 .nav-bar {
     display: flex;
-    justify-content: space-around;
-    background-color: red;
+    justify-content: space-between;
+    background-color: rgb(198, 13, 13);
+    color: black;
+    padding-bottom: 5px;
+    
 }
 
 .nav-bar img {
@@ -12,4 +15,26 @@
 
 .nav-bar .icon {
     color: black;
+    vertical-align: sub;
+}
+
+.first-section {
+    margin-left: 10px;
+}
+
+.first-section .icon {
+    padding-left: 10px;
+    padding-right: 15px;;
+}
+
+.second-section {
+    margin-right: 10px;
+}
+
+.second-section .icon {
+    padding-right: 15px;;
+}
+
+.nav-bar .icon :hover {
+    background-color: whitesmoke;
 }
