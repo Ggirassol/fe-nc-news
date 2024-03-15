@@ -3,12 +3,12 @@ import { useContext } from "react";
 import UserContext from "../../contexts/User";
 import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = ({ setOrder_by, setSort_by}) => {
   const { currUser } = useContext(UserContext);
 
   return (
     <nav className="nav-bar">
-      <Link className="icon" to="/">Home</Link>
+      <Link onClick={() => {setOrder_by(null); setSort_by(null)}} className="icon" to="/">Home</Link>
       <span>Hello {currUser.username}!</span>
       <Link className="icon" to={`/${currUser.username}/create`}>Create</Link>
       <Link className="icon" to="/members" >Members</Link>

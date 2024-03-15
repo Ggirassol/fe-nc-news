@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
-
 import UserContext from './contexts/User';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
@@ -32,7 +31,7 @@ function App() {
   return (
     <UserContext.Provider value={{currUser}}>
       <Header/>
-      <NavBar/>
+      <NavBar setSort_by={setSort_by} setOrder_by={setOrder_by}/>
       <FilterBar order_by={order_by} setOrder_by={setOrder_by} sort_by={sort_by} setSort_by={setSort_by}/>
       <Routes>
         <Route path='/' element={<ArticlesList order_by={order_by} sort_by={sort_by}/>} />
