@@ -9,7 +9,7 @@ import AddArticle from './components/AddArticle';
 import Users from './components/Users';
 import SingleUser from './components/SingleUser';
 import Library from './components/Library';
-import Profile from './components/Profile';
+import Profile from './components/Profile/Profile';
 import ArticlesListByTopic from './components/ArticlesListByTopic';
 import FilterBar from './components/FilterBar.jsx/FilterBar';
 import ErrorPage from './components/ErrorPage/ErrorPage';
