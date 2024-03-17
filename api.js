@@ -53,3 +53,7 @@ export const getArticlesByTopic = (topic, sort_by, order_by) => {
       }
     return ncNews.get(url)
 }
+
+export const likeComment = (comment_id, vote) => {
+  return ncNews.patch(`/comments/${comment_id}`, {inc_votes: vote})
+}
