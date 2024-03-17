@@ -41,7 +41,7 @@ function App() {
         <Route path={`/${currUser.username}/create`} element ={<AddArticle/>} />
         <Route path='/members' element ={<Users/>} />
         <Route path={`/members/${currUser.username}`} element ={<SingleUser/>} />
-        <Route path={`/${currUser.username}/library`} element ={<Library/>} />
+        <Route path={`/${currUser.username}/library`} element ={<Library order_by={order_by} sort_by={sort_by}/>} />
         <Route path={`/${currUser.username}/profile`} element ={<Profile/>} />
         <Route path={`/topic/:topic`} element={<ArticlesListByTopic order_by={order_by} sort_by={sort_by}/>}/>
         <Route path="*" element={<ErrorPage/>} />
