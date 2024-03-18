@@ -57,3 +57,11 @@ export const getArticlesByTopic = (topic, sort_by, order_by) => {
 export const likeComment = (comment_id, vote) => {
   return ncNews.patch(`/comments/${comment_id}`, {inc_votes: vote})
 }
+
+export const getUsers = () => {
+  return ncNews.get('/users')
+}
+
+export const getSingleUser = (username) => {
+  return ncNews.get(`/users/${username}`)
+}
