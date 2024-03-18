@@ -7,8 +7,8 @@ const Profile = () => {
     return (
         <div className="profile">
             <img src={currUser.avatar_url} alt='my profile avatar'/> 
-            <h2>{currUser.username}</h2>
-            <h3>{currUser.name}</h3>
+            <p><b>Username: </b>{currUser.username}</p>
+            <p><b>Name: </b>{currUser.name}</p>
         </div>
         )
 }

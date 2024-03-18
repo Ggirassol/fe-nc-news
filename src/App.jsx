@@ -6,8 +6,8 @@ import NavBar from './components/NavBar/NavBar';
 import ArticlesList from './components/ArticlesList/ArticlesList';
 import SingleArticle from './components/SingleArticle/SingleArticle';
 import AddArticle from './components/AddArticle';
-import Users from './components/Users';
-import SingleUser from './components/SingleUser';
+import Users from './components/Users/Users';
+import SingleUser from './components/SingleUser/SingleUser';
 import Library from './components/Library';
 import Profile from './components/Profile/Profile';
 import ArticlesListByTopic from './components/ArticlesListByTopic';
@@ -40,7 +40,7 @@ function App() {
         <Route path='/articles/:article_id' element={<SingleArticle />} />
         <Route path={`/${currUser.username}/create`} element ={<AddArticle/>} />
         <Route path='/members' element ={<Users/>} />
-        <Route path={`/members/${currUser.username}`} element ={<SingleUser/>} />
+        <Route path={'/members/:username'} element ={<SingleUser/>} />
         <Route path={`/${currUser.username}/library`} element ={<Library order_by={order_by} sort_by={sort_by}/>} />
         <Route path={`/${currUser.username}/profile`} element ={<Profile/>} />
         <Route path={`/topic/:topic`} element={<ArticlesListByTopic order_by={order_by} sort_by={sort_by}/>}/>

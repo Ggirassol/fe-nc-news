@@ -1,0 +1,25 @@
+.user-card {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border: solid black;
+    border-radius: 15px;
+    width: fit-content;
+    text-align: center;
+}
+
+.user-card img {
+    width: 100px;
+    align-self: center;
+}
+
+
+.user-card:hover{
+    background-color: rgb(224, 221, 221);
+    box-shadow: 5px 5px rgba(209, 207, 207, 0.907);
+}
+
+.no-avatar {
+    font-size: xx-large;
+}
