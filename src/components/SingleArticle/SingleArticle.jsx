@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getSingleArticle, likeArticle } from "../../../api";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import "./SingleArticle.css"
@@ -70,7 +70,12 @@ const SingleArticle = () => {
         <div className="single-article">
         <h1>{currSingleArticle.title}</h1>
         <img src={currSingleArticle.article_img_url}/>
-        <h2 className="author">By {currSingleArticle.author}</h2>
+        <h2 className="author">
+          <span>By </span>
+          <Link to ={`/members/${currSingleArticle.author}`}>
+            <span>{currSingleArticle.author}</span>
+        </Link>
+        </h2>
         <p>{currSingleArticle.body}</p>
         <h3>{currSingleArticle.created_at ? currSingleArticle.created_at.slice(0, 10) : ""}</h3>
         

@@ -3,7 +3,6 @@ import { useContext } from "react";
 import UserContext from "../../contexts/User";
 import HomeIcon from '@mui/icons-material/Home';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import PeopleIcon from '@mui/icons-material/People';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -20,7 +19,6 @@ const NavBar = ({ setOrder_by, setSort_by}) => {
       </div>
       <div className="second-section">
       <Link aria-label="write an article"className="icon" to={`/${currUser.username}/create`}><AddBoxIcon/></Link>
-      <Link aria-label="members" className="icon" to="/members"><PeopleIcon/></Link>
       <Link aria-label="My library" className="icon" to={`/${currUser.username}/library`}><AutoStoriesIcon/></Link>
       {currUser.avatar_url ? (
         <Link to={`/${currUser.username}/profile`}>
