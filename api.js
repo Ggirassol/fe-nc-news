@@ -65,3 +65,7 @@ export const getUsers = () => {
 export const getSingleUser = (username) => {
   return ncNews.get(`/users/${username}`)
 }
+
+export const addArticle = (username, title, body, topic, img) => {
+  return ncNews.post(`/articles/`, {author: username, title: title, topic: topic, body: body, article_img_url:img})
+}

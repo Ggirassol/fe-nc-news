@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import ArticlesList from './components/ArticlesList/ArticlesList';
 import SingleArticle from './components/SingleArticle/SingleArticle';
-import AddArticle from './components/AddArticle';
+import AddArticle from './components/AddArticle/AddArticle';
 import SingleUser from './components/SingleUser/SingleUser';
 import Library from './components/Library';
 import Profile from './components/Profile/Profile';
